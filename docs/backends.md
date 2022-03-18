@@ -3,7 +3,7 @@
 
 ## Backend Classes
 Several cache backends are included, which can be selected using the `cache` parameter for
-{py:class}`.CachedSession`:
+{py:class}`.CachedSession`. SQLite is used as the default.
 
 ```{eval-rst}
 .. autosummary::

@@ -52,14 +52,14 @@ async with ClientSession() as session:
 
 **With this:**
 ```python
-from aiohttp_client_cache import CachedSession, SQLiteBackend
+from aiohttp_client_cache import CachedSession
 
-async with CachedSession(cache=SQLiteBackend('demo_cache')) as session:
+async with CachedSession() as session:
     await session.get('http://httpbin.org/delay/1')
 ```
 
 The URL in this example adds a delay of 1 second, simulating a slow or rate-limited website.
-With caching, the response will be fetched once, saved to `demo_cache.sqlite`, and subsequent
+With caching, the response will be fetched once, saved to a SQLite database, and subsequent
 requests will return the cached response near-instantly.
 
 ## Configuration
@@ -67,7 +67,7 @@ Several options are available to customize caching behavior. This example demons
 
 ```python
 # fmt: off
-from aiohttp_client_cache import SQLiteBackend
+from aiohttp_client_cache import CachedSession, SQLiteBackend
 
 cache = SQLiteBackend(
     cache_name='~/.cache/aiohttp-requests.db',  # For SQLite, this will be used as the filename
@@ -79,6 +79,7 @@ cache = SQLiteBackend(
     ignored_params=['auth_token'],              # Keep using the cached response even if this param changes
     timeout=2.5,                                # Connection timeout for SQLite backend
 )
+session = CachedSession(cache=cache)
 ```
 
 # More Info

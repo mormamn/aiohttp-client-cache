@@ -212,8 +212,7 @@ The following attributes are available on both cached and new responses returned
 
 Examples:
 ```python
->>> from aiohttp_client_cache import CachedSession
->>> session = CachedSession(expire_after=timedelta(days=1))
+>>> session = CachedSession(cache=cache, expire_after=timedelta(days=1))
 
 >>> # Placeholders are added for non-cached responses
 >>> r = await session.get('http://httpbin.org/get')
@@ -241,9 +240,9 @@ attributes available.
 For example, if you wanted to to see all URLs requested with a specific method:
 ```python
 >>> post_urls = [
->>>     response.url async for response in session.cache.responses.values()
->>>     if response.method == 'POST'
->>> ]
+...     response.url async for response in session.cache.responses.values()
+...     if response.method == 'POST'
+... ]
 ```
 
 You can also inspect `CachedSession.cache.redirects`, which maps redirect URLs to keys of the

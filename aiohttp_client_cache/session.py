@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Optional
 from aiohttp import ClientSession
 from aiohttp.typedefs import StrOrURL
 
-from aiohttp_client_cache.backends import CacheBackend, get_valid_kwargs
+from aiohttp_client_cache.backends import CacheBackend, SQLiteBackend, get_valid_kwargs
 from aiohttp_client_cache.docs import copy_signature, extend_signature
 from aiohttp_client_cache.response import AnyResponse, set_response_defaults
 
@@ -30,7 +30,7 @@ class CacheMixin(MIXIN_BASE):
         cache: CacheBackend = None,
         **kwargs,
     ):
-        self.cache = cache or CacheBackend()
+        self.cache = cache or SQLiteBackend()
 
         # Pass along any valid kwargs for ClientSession (or custom session superclass)
         session_kwargs = get_valid_kwargs(super().__init__, {**kwargs, 'base_url': base_url})
