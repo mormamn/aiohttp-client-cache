@@ -87,7 +87,7 @@ If the built-in backends don't suit your needs, you can create your own by makin
 ...     async def size(self) -> int:
 ...         """Get the number of items in the cache"""
 ...
-...     def values(self) -> AsyncIterable[ResponseOrKey]:
+...     async def values(self) -> AsyncIterable[ResponseOrKey]:
 ...         """Get all values stored in the cache"""
 ...
 ...     async def write(self, key: str, item: ResponseOrKey):

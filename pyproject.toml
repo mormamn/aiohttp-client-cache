@@ -10,15 +10,14 @@ repository = "https://github.com/requests-cache/aiohttp-client-cache"
 keywords = ["aiohttp", "async", "asyncio", "cache", "cache-backends", "client", "http",
             "persistence", "requests", "sqlite", "redis", "mongodb", "dynamodb"]
 include = [
-    { path = "*.md", format = "sdist" },
-    { path = "*.yml", format = "sdist" },
-    { path = "aiohttp_client_cache/py.typed" },
-    { path = "docs", format = "sdist" },
-    { path = "examples", format = "sdist" },
-    { path = "test", format = "sdist" }
+    {format="sdist", path="*.md"},
+    {format="sdist", path="*.yml"},
+    {format="sdist", path="docs"},
+    {format="sdist", path="examples"},
+    {format="sdist", path="test"}
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     'Framework :: AsyncIO',
     'Framework :: aiohttp',
     "Intended Audience :: Developers",
@@ -31,8 +30,8 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-aiohttp = "^=3.8"
-attrs = "^21.2"
+aiohttp = "^3.8"
+attrs = ">=21.2"
 itsdangerous = "*"
 python-forge = "^18.6"
 url-normalize = "^1.4"
@@ -67,23 +66,15 @@ docs = ["furo", "linkify-it-py", "myst-parser", "sphinx", "sphinx-automodapi",
         "sphinx-autodoc-typehints", "sphinx-copybutton", "sphinx-inline-tabs", "sphinxcontrib-apidoc"]
 
 [tool.poetry.dev-dependencies]
-# For unit + integration tests
+nox = "^2022.1.7"
+nox-poetry = "^1.0.0"
+pre-commit = ">=2.12"
 pytest = ">=6.2"
 pytest-aiohttp = "^0.3"
 pytest-asyncio = "^0.14"
 pytest-clarity = "^1.0"
 pytest-cov = "^2.11"
 pytest-xdist = "^2.3"
-
-# For linting, type checking etc.; additional tools are managed by pre-commit
-mypy = "^0.910"
-pre-commit = ">=2.12"
-tomli = ">=1.2"
-types-aiofiles = ">=0.1.7"
-
-# For convenience in local development
-nox = "^2022.1.7"
-nox-poetry = "^0.8.6"
 sphinx-autobuild = ">=2021.3.14"
 
 # Workarounds for possible dependency issues with importlib-metadata (3.7 only)

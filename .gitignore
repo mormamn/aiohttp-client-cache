@@ -8,6 +8,8 @@
 .vscode/
 build/
 dist/
+downloads/
+example_cache/
 venv/
 
 # Test / coverage reports
